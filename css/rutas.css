@@ -108,13 +108,22 @@ body {
     text-decoration: none
 }
 
+/* Navegación principal */
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+}
+
 .main-nav a {
     margin: 0 14px;
     color: #000000;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    padding: 6px 4px
+    padding: 6px 4px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .main-nav a::after {
@@ -133,6 +142,50 @@ body {
 .main-nav a:hover::after {
     opacity: 1;
     transform: scaleX(1)
+}
+
+/* Botón hamburguesa (oculto en desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin: 3px 0;
+    background: var(--dark);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.hamburger.active {
+    background: rgba(255, 180, 0, 0.15);
 }
 
 .lang {
@@ -444,59 +497,7 @@ body.page-rutas .card-body .read-more {
     gap: 12px;
 }
 
-/* Diseño responsivo */
-
-/* Menú Hamburguesa - Oculto en desktop */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 44px;
-    height: 44px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-    z-index: 100;
-}
-
-.hamburger:hover {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.hamburger span {
-    display: block;
-    width: 26px;
-    height: 3px;
-    margin: 3px 0;
-    background: var(--dark);
-    border-radius: 3px;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform-origin: center;
-}
-
-/* Animación hamburguesa a X */
-.hamburger.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: scale(0);
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-.hamburger.active {
-    background: rgba(255, 180, 0, 0.15);
-}
-
-/* Tableta y movile */
+/* Diseño responsivo - Tableta y móvil */
 
 @media (max-width: 900px) {
     /* Mostrar hamburguesa */
